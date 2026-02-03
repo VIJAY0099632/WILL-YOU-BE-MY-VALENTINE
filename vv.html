@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Be My Valentine 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff6a88, #ff99ac);
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 80px;
+      color: white;
+      font-size: 38px;
+      text-shadow: 2px 2px #ff2e63;
+    }
+
+    #msg {
+      margin-top: 20px;
+      color: white;
+      font-size: 22px;
+      min-height: 40px;
+      padding: 0 20px;
+    }
+
+    button {
+      padding: 16px 38px;
+      font-size: 22px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 10px;
+    }
+
+    #yes {
+      background: linear-gradient(135deg, #ff0055, #ff4d6d);
+      color: white;
+      box-shadow: 0 0 25px #ff0055;
+    }
+
+    #no {
+      background: rgba(0,0,0,0.45);
+      color: white;
+      position: absolute;
+    }
+
+    .confetti {
+      position: fixed;
+      top: -10px;
+      font-size: 26px;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Nee nanna Valentine aagthiya? 💘</h1>
+<div id="msg">Ninna heart en helutte adanna kelu 😌💖</div>
+
+<br><br>
+<button id="yes" onclick="yesClick()">YES 💕</button>
+<button id="no" onclick="noClick()">NO 😐</button>
+
+<script>
+  let count = 0;
+
+  const texts = [
+    "Ayyo 🥺 nijavaaglu beda antiya?",
+    "Innu ond sala think maadu jaanuu… nanna heart illi ide 💔",
+    "Naan ninna life full care maadthini 💞",
+    "Daily ninna smile maadode nanna duty 😊",
+    "Yak inna nan heart test maadthiya 😭",
+    "Nav ibru jothe iddre life super beautiful aagutte 💑",
+    "Ninna heart already YES heltha ide nodeeee😏",
+    "Innu NO click maadthiya? comedy maadtha idiya 😂",
+    "Sari sari… drama saaku 😌",
+    "Last chance kaneee… heart break maadbeda 💘",
+    "Naan serious aagi helta idinii… nin illade nanna life empty 💔",
+    "Yes helidre nin life full romance guarantee 😜💖"
+  ];
+
+  const yesTexts = [
+    "Ayyyy 💖 nange gothu neenu YES helthiya anta!",
+    "Nin YES anta helidu life best moment 😭💕",
+    "From today… neene nanna Valentine 💞",
+    "Nanna heart full happy aagide 💖",
+    "Ee YES nanna future decide maadthu 😍",
+    "I promise… ninna sad aagoke chance kooda kodalla 💑"
+  ];
+
+  function noClick() {
+    document.getElementById("msg").innerText =
+      texts[Math.min(count, texts.length - 1)];
+
+    const noBtn = document.getElementById("no");
+    noBtn.style.left = Math.random() * 75 + "vw";
+    noBtn.style.top = Math.random() * 75 + "vh";
+
+    count++;
+  }
+
+  function yesClick() {
+    const randomYes =
+      yesTexts[Math.floor(Math.random() * yesTexts.length)];
+
+    document.body.innerHTML = `
+      <h1 style="margin-top:140px;color:white;">
+        🎉 YAYYYY 🎉<br>
+        Neenu YES helidya 😭💕
+      </h1>
+      <h2 style="color:white;">
+        ${randomYes}<br><br>
+        Nanna Valentine. Nanna Heart. Nanna Ella 💖
+      </h2>
+    `;
+    startConfetti();
+  }
+
+  function startConfetti() {
+    const emojis = ["🎉","🎊","💖","✨","🥳","🎈","💥"];
+    for (let i = 0; i < 160; i++) {
+      const conf = document.createElement("div");
+      conf.className = "confetti";
+      conf.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      conf.style.left = Math.random() * 100 + "vw";
+      conf.style.animationDuration = Math.random() * 3 + 2 + "s";
+      document.body.appendChild(conf);
+
+      setTimeout(() => conf.remove(), 5000);
+    }
+  }
+</script>
+
+</body>
+</html>
